@@ -1,6 +1,7 @@
 import customtkinter
 
 from config import init_app_config, Configuration
+from ViewCardBase import ViewCardBase
 
 class App(customtkinter.CTk):
     def __init__(self):
@@ -12,7 +13,6 @@ class App(customtkinter.CTk):
         self.grid_columnconfigure((2, 3), weight=0)
         self.grid_rowconfigure((0, 1, 2), weight=1)
         
-        self.geometry(f"{int(self.winfo_screenwidth()*Configuration['init_width_ratio'])}x{int(self.winfo_screenheight()*Configuration['init_height_ratio'])}+{int(self.winfo_screenwidth()*Configuration['init_width_ratio']/2)}+{int(self.winfo_screenheight()*Configuration['init_height_ratio']/2)}")
 
         self.sidebar_frame = customtkinter.CTkFrame(self, width=80, corner_radius=0)
         self.sidebar_frame.grid(row=0, column=0, rowspan=4, sticky="nswe", columnspan=1)
@@ -28,6 +28,11 @@ class App(customtkinter.CTk):
         self.sidebar_button_2.grid(row=2, column=0, pady=(5, 0))
         self.sidebar_button_2.configure(text="View backups")
         self.sidebar_button_2.configure(state="disabled", text_color_disabled="#bfbfbf")
+
+        self.card1 = ViewCardBase(self)
+        
+
+        self.geometry(f"{int(self.winfo_screenwidth()*Configuration['init_width_ratio'])}x{int(self.winfo_screenheight()*Configuration['init_height_ratio'])}+{int(self.winfo_screenwidth()*Configuration['init_width_ratio']/2)}+{int(self.winfo_screenheight()*Configuration['init_height_ratio']/2)}")
 
     def sidebar_button_event(self):
         print("Button clicked")
