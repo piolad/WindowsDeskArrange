@@ -21,6 +21,8 @@ class App(customtkinter.CTk):
 
         self.sidebar_frame = customtkinter.CTkFrame(self, width=80, corner_radius=0)
         self.sidebar_frame.grid(row=0, column=0, rowspan=4, sticky="nswe", columnspan=1)
+        self.sidebar_frame.rowconfigure((0,1,2), weight=0)
+        self.sidebar_frame.rowconfigure((3,4,5,6), weight=1)
         self.logo_label = customtkinter.CTkLabel(self.sidebar_frame, text=Configuration["app_sidebar_title"], font=customtkinter.CTkFont(size=12, weight="bold"))
         self.logo_label.grid(row=0, column=0, padx=12, pady=(12, 10))
         # self.sidebar_frame.pack(side="left", fill="y")
@@ -34,6 +36,10 @@ class App(customtkinter.CTk):
         self.sidebar_button_2.configure(text="View backups")
         self.sidebar_button_2.configure(text_color_disabled="#bfbfbf")
 
+
+        self.sidebar_button_3 = customtkinter.CTkButton(self.sidebar_frame, command=self.sidebar_button_event, fg_color="#b31004",font=customtkinter.CTkFont( weight="bold"))
+        self.sidebar_button_3.grid(row=6, column=0, pady=(5, 0))
+        self.sidebar_button_3.configure(text="Apply Changes")
 
         
         # self.my_frame = MyFrame(master=self, width=300, height=200)

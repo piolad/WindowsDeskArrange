@@ -1,5 +1,3 @@
-import customtkinter
-
 from App import App
 
 
